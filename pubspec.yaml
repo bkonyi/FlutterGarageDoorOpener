@@ -12,6 +12,7 @@ dependencies:
     path:
       ../plugins/packages/geofencing
   geolocator: ^1.7.0
+  shared_preferences: ^0.4.2
 
 dev_dependencies:
   flutter_test:

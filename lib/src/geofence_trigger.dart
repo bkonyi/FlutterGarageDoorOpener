@@ -33,7 +33,8 @@ abstract class GeofenceTrigger {
 
   static Future<void> _handleLocationUpdate(Position p) async {
     final home = homeRegion.location;
-    final distance = await Geolocator().distanceBetween(p.latitude, p.longitude, home.latitude, home.longitude);
+    final distance = await Geolocator().distanceBetween(
+        p.latitude, p.longitude, home.latitude, home.longitude);
     print('$p : $home');
     print('Distance to home: $distance');
     if (distance < 100.0) {
@@ -45,7 +46,7 @@ abstract class GeofenceTrigger {
     }
   }
 
-static final homeRegion = GeofenceRegion('home', 0.0, 0.0, 10000.0,
+  static final homeRegion = GeofenceRegion('home', 0.0, 0.0, 10000.0,
       <GeofenceEvent>[GeofenceEvent.enter, GeofenceEvent.exit],
       androidSettings: _androidSettings);
 
@@ -58,8 +59,8 @@ static final homeRegion = GeofenceRegion('home', 0.0, 0.0, 10000.0,
     }
     if (event == GeofenceEvent.enter) {
       print('Starting location updates');
-      _locationUpdates =
-          (await Geolocator().getPositionStream()).listen(_handleLocationUpdate);
+      _locationUpdates = (await Geolocator().getPositionStream())
+          .listen(_handleLocationUpdate);
     } else if ((event == GeofenceEvent.exit) && (_locationUpdates != null)) {
       print('Cancelling location updates');
       await _locationUpdates.cancel();

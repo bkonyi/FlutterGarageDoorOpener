@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:geofencing/geofencing.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'src/common.dart';
 import 'src/garage_door_remote.dart';
 import 'src/geofence_trigger.dart';
@@ -38,6 +39,8 @@ enum DoorActivityState {
 }
 
 class _GarageDoorRemoteState extends State<GarageDoorRemotePage> {
+  static const kProximityToggleKey = 'proximity_toggle_state';
+  SharedPreferences sharedPreferences;
   bool isOpen = false;
   DoorActivityState state = DoorActivityState.None;
 
@@ -48,6 +51,11 @@ class _GarageDoorRemoteState extends State<GarageDoorRemotePage> {
   }
 
   Future<void> initPlatformState() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      _proximityTriggerEnabled =
+          sharedPreferences.getBool(kProximityToggleKey) ?? false;
+    });
     initialize().then((void _) {
       _getGarageDoorState();
       _startRefreshPolling();
@@ -151,6 +159,8 @@ class _GarageDoorRemoteState extends State<GarageDoorRemotePage> {
             onChanged: (bool state) async {
               setState(() {
                 _proximityTriggerEnabled = state;
+                sharedPreferences.setBool(
+                    kProximityToggleKey, _proximityTriggerEnabled);
               });
               if (state) {
                 await GeofencingManager.registerGeofence(
