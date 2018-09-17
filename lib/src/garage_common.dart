@@ -1,6 +1,6 @@
 import 'dart:io' show InternetAddress;
 
-final garageExternalIP = 'brkonyi.dlinkddns.com'; //'192.168.86.40';
+final garageExternalIP = '192.168.86.40';
 const garagePort = 1416;
 const garageEventType = 'event_type';
 const garageResponse = 'response';
