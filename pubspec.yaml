@@ -10,7 +10,7 @@ dependencies:
   flutter_local_notifications: ^0.3.7
   geofencing:
     path:
-      ../plugins/packages/geofencing
+      ../FlutterGeofencing
   geolocator: ^1.7.0
   shared_preferences: ^0.4.2
 
@@ -39,7 +39,7 @@ flutter:
     - certs/client.key
     - certs/client.crt
     - certs/domain.crt
-    - assets/button.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
@@ -58,10 +58,10 @@ flutter:
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
-  #     fonts: 
+  #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies, 
+  # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
