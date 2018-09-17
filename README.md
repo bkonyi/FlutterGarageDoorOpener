@@ -1,8 +1,5 @@
-# garage_door_opener
+# Flutter Garage Door Remote
 
-A new Flutter project.
+<img width="300" align="right" src="https://thumbs.gfycat.com/WickedHospitableEidolonhelvum-size_restricted.gif">
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+A garage door remote for mobile, written in Flutter.
