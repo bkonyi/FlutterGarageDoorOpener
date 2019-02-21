@@ -1,4 +1,4 @@
-package com.example.garagedooropener;
+package com.bkonyi.garagedooropener;
 
 import io.flutter.app.FlutterApplication;
 import io.flutter.plugin.common.PluginRegistry;

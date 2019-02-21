@@ -1,4 +1,4 @@
-package com.example.garagedooropener;
+package com.bkonyi.garagedooropener;
 
 import android.os.Bundle;
 

@@ -24,8 +24,8 @@ abstract class GeofenceTrigger {
 
   // Geofencing state.
   static final _androidSettings = AndroidGeofencingSettings(initialTrigger: [
-    GeofenceEvent.exit,
     GeofenceEvent.enter,
+    GeofenceEvent.exit,
   ], notificationResponsiveness: 0, loiteringDelay: 0);
 
   static bool _isInitialized = false;
@@ -62,6 +62,8 @@ abstract class GeofenceTrigger {
         await postNotification(0, 'Opening Garage Door',
             'A geofence event has triggered the garage door!');
         await GarageDoorRemote.openDoor();
+      } else {
+        await postNotification(0, 'Within 100m of home', 'Door is already open.');
       }
       await _stopUpdates();
     }
@@ -84,6 +86,7 @@ abstract class GeofenceTrigger {
     if (event == GeofenceEvent.enter) {
       await _startUpdates();
     } else if ((event == GeofenceEvent.exit) && (_locationUpdates != null)) {
+      await postNotification(0, 'Leaving home geofence', 'Stopped frequent location updates.');
       await _stopUpdates();
     }
   }
